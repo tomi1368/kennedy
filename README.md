@@ -18,4 +18,5 @@
 3. Abrir Postman e importar la coleccion que se encuentra en el root del proyecto (ms-kennedy.postman_collection.json)
 
 ## Recomendaciones
-  - El flujo normal en Postman seria hacer la request del POST luego las demas (DELETE, PATCH, GET). No pasa nada sino se sigue el path igualmente. Se enviaran los errores correspondientes 
+  - El flujo normal en Postman seria hacer la request del POST luego las demas (DELETE, PATCH, GET). Debido a que se tiene que crear un documento para editar o eliminar. 
+    No pasa nada sino se sigue el path igualmente. Se enviaran los errores correspondientes 
