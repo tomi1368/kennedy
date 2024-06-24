@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Product } from './entities/product.entity';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { CreateProductDto } from './dtos/createProduct.dto';
 import { UpdateProductDto } from './dtos/updateProduct.dto';
 
@@ -22,6 +22,10 @@ export class ProductService {
   }
 
   async deleteOne(id: string) {
+    if (!Types.ObjectId.isValid(id)) {
+      throw new HttpException('Invalid Id', HttpStatus.BAD_REQUEST);
+    }
+
     const deleteProduct = await this.productModel
       .findOneAndDelete({ _id: id })
       .lean()
@@ -33,6 +37,9 @@ export class ProductService {
   }
 
   async updateOne(body: UpdateProductDto, id: string) {
+    if (!Types.ObjectId.isValid(id)) {
+      throw new HttpException('Invalid Id', HttpStatus.BAD_REQUEST);
+    }
     const updatedProduct = await this.productModel
       .findOneAndUpdate({ _id: id }, { $set: body }, { new: true })
       .lean()
