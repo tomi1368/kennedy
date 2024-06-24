@@ -7,15 +7,15 @@ services:
       - '27017:27017'
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: kennedy
+      MONGO_INITDB_ROOT_PASSWORD: ukuniversity
 
   app:
     build: .
-    container_name: keneddy_ms
+    container_name: ukuniversity_ms
     ports:
       - '3000:3000'
     environment:
       PORT: 3000
-      DB_URL: mongodb://root:kennedy@mongodb:27017/keneddy_ms?authSource=admin
+      DB_URL: mongodb://root:ukuniversity@mongodb:27017/ukuniversity_ms?authSource=admin
     depends_on:
       - mongodb
